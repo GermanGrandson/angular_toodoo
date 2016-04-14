@@ -2,18 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <title>Angular ToDew</title>
-  </head>
-  <script></script>
-  <body>
+    <title>Angular TooDoo</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+      <script src="javascripts/todo.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+  </head>
+  <body ng-app="ToDo">
+
+    <h1> TODO LIST</h1>
     <div ng-controller='todoController'>
       <form name="frm" ng-submit="addTodo()">
-      <input type="text" name="newtodo" ng-model="newtodo" required="">
-      <button ng-disabled='frm.$invalid'>Go</button>
+      <input type="text" name="newtodo" ng-model="newtodo" required>
+      <button ng-disabled='frm.$invalid' class='btn btn-danger'>Go</button>
     </form>
-      <button ng-click="clearCompleted()">Clear Completed</button>
+      <button ng-click="clearCompleted()" class='btn btn-primary'>Clear Completed</button>
 
       <ul>
         <li ng-repeat="todo in todos">
@@ -22,24 +25,6 @@
       </ul>
 
     </div>
-
-
-    <script>
-
-    angular.module('ToDo', []).
-    controller('todoController', ['$scope', function($scope){
-
-      $scope.todos = [
-        {'title': 'Build a todo app', 'done': false}
-      ];
-
-
-      $scope.addTodo = function(){}
-      $scope.clearCompleted = function(){}
-
-    }])
-
-    </script>
 
   </body>
 </html>
