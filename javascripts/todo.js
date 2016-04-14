@@ -6,7 +6,13 @@ controller('todoController', ['$scope', function($scope){
   ];
 
 
-  $scope.addTodo = function(){}
-  $scope.clearCompleted = function(){}
+  $scope.addTodo = function(){
+    $scope.todos.push({'title':$scope.newTodo, 'done':false})
+    $scope.newTodo = ''
+  }
+  $scope.clearCompleted = function(){
+    $scope.todos = $scope.filter
+
+  }
 
 }])

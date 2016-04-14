@@ -7,20 +7,26 @@
       <script src="javascripts/todo.js"></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+      <style>
+      .done{text-decoration: line-through;color:red;}
+      </style>
+
   </head>
   <body ng-app="ToDo">
 
     <h1> TODO LIST</h1>
     <div ng-controller='todoController'>
       <form name="frm" ng-submit="addTodo()">
-      <input type="text" name="newtodo" ng-model="newtodo" required>
+      <input type="text" name="newtodo" ng-model="newTodo" required>
       <button ng-disabled='frm.$invalid' class='btn btn-danger'>Go</button>
     </form>
       <button ng-click="clearCompleted()" class='btn btn-primary'>Clear Completed</button>
 
       <ul>
         <li ng-repeat="todo in todos">
-          {{todo.title}}
+          <input type="checkbox" ng-model="todo.done" />
+          <span ng-class="{'done':todo.done}"> {{todo.title}}</span>
+          <!-- the done class above will work if the todo.done attribute is true -->
         </li>
       </ul>
 
